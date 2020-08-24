@@ -1,0 +1,493 @@
+categories:
+ - categorie: "Mots du quotidien"
+   mots:
+     - mot: "Bonjour"
+       description: "Main plate sur la bouche, mouvement vers l'exterieur"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Bonjour"
+
+     - mot: "Ca va"
+       description: "On plie les deux doigts de chaque main vers soi"
+       lien: ""
+
+     - mot: "Oui"
+       description: "Ok avec la main du haut vers le bas (rotation)"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/oui"
+
+     - mot: "Non"
+       description: "Les deux doigts du 'N' qui vont vers le bas"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/non"
+
+     - mot: "Je ne sais pas"
+       description: "Main plate ('M') qui part du front et qui va vers la droite
+       en se refermant"
+       lien: "https://www.youtube.com/watch?v=JstvHxLDFgs"
+
+     - mot: "S'il te plait"
+       description: "Main plate ('M') sur le cote de la tete et qui descend,
+       face vers la personne."
+       lien: "https://www.youtube.com/watch?v=AYJoQCgUHvw"
+
+     - mot: "Merci"
+       description: "Main plate sur le menton, mouvement vers l'exterieur"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Merci"
+
+     - mot: "De rien"
+       description: "Deux doigts croises ('R') qui partent du menton et qui font
+       un crochet sur les cotes avant d'aller vers le bas"
+       lien: "https://www.youtube.com/watch?v=zOT2v8KennI"
+
+     - mot: "Au revoir"
+       description: "Main plate vers la personne et on la plie"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Au%20revoir"
+
+     - mot: "Pardon"
+       description: "Main gauche plate vers le haut, et main droite qui la
+       frotte dans le sens anti horaire"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Pardon"
+
+     - mot: "Bravo"
+       description: "On secoue les deux mains au niveau de notre tete"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Bravo"
+
+ - categorie: "Se presenter"
+   mots:
+     - mot: "Je"
+       description: "On se pointe du doigt"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Je"
+
+     - mot: "M'appelle"
+       description: "Deux doigts de chaque main qui se tapent entre eux en
+       faisant une croix, devant sois et de facon horizontale"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Appeler"
+
+     - mot: "J'habite"
+       description: "Mains en pince de crabe"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Habiter"
+
+     - mot: "Age"
+       description: "On ecrase ses deux mains l'une sur l'autre"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/âge"
+
+     - mot: "Ans"
+       description: "On tape les poings l'un sur l'autre"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/An"
+
+ - categorie: "Nouvel an"
+   mots:
+     - mot: "Bon"
+       description: "On rassemble tous ses doigts (main en cone) et on part de
+       la bouche vers l'exterieur"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Bon"
+
+     - mot: "Reveillon"
+       description: "'Y' a l'horizontal qui monte et descendent"
+       lien: "https://www.youtube.com/watch?v=ZtI9sUtTzAU"
+
+     - mot: "Fetes"
+       description: "Les doigts qui pointent vers le haut et on monte et descend"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Fetes"
+
+     - mot: "Fin"
+       description: "Le poing de la main droite qui tape dans le creux de la
+       main gauche"
+       lien: "https://www.youtube.com/watch?v=ZtI9sUtTzAU"
+
+     - mot: "Annee"
+       description: "Ses deux poings, le droit part du haut de l'autre, fait un
+       tour en passent par devant et le bas, et vient ensuite taper sur le haut
+       du deuxieme"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Annee"
+
+     - mot: "Meilleurs"
+       description: "Main plate devant la bouche qui se rabat a droite en se
+       fermant deux fois"
+       lien: "https://www.youtube.com/watch?v=ZtI9sUtTzAU"
+
+     - mot: "Voeux"
+       description: "Main a plat qui s'envolent comme des hirondelles en se
+       pliant vers le haut"
+       lien: "https://www.youtube.com/watch?v=ZtI9sUtTzAU"
+
+     - mot: "Beaucoup"
+       description: "Deux mains a plat rassemble devant sois qui s'ecartent en
+       faisant des pinces de crabes"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Beaucoup"
+
+     - mot: "Bonheur"
+       description: "Les deux mains font des pinces de crabes en essayant de
+       s'attraper entre elles"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Bonheur"
+
+     - mot: "Sante"
+       description: "Majeur qui part de la gauche de la poitrine jusqu'a la droite"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Sante"
+
+     - mot: "Reussite"
+       description: "Poing avec la main gauche, et on attrape un objet
+       imaginaire pose dessus avec la main droite"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Reussite"
+
+     - mot: "Je t'aime"
+       description: "Main plate face vers nous qui part du bas du ventre et qui
+       remonte en se tendant vers la personne (Comme si on offrait quelque chose)"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Aimer"
+
+ - categorie: "Jour et mois"
+   mots:
+     - mot: "Lundi"
+       description: "L inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Lundi"
+
+     - mot: "Mardi"
+       description: "A inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Mardi"
+
+     - mot: "Mercredi"
+       description: "E inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Mercredi"
+
+     - mot: "Jeudi"
+       description: "J qui fait une pelle (on creuse avec)"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Jeudi"
+
+     - mot: "Vendredi"
+       description: "V inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Vendredi"
+
+     - mot: "Samedi"
+       description: "S inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Samedi"
+
+     - mot: "Dimanche"
+       description: "D inverse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Dimanche"
+
+     - mot: "Janvier"
+       description: "'B' avec la main et on 'fait la bise' de chaque coter de
+       ses joues"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Janvier"
+
+     - mot: "Fevrier"
+       description: "On se caresse le nez"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Fevrier"
+
+     - mot: "Mars"
+       description: "On fait un poing avec sa main droite mais on met l'index
+       au dessus de son pouce et on vient toucher son menton"
+       lien: "https://www.youtube.com/watch?v=m8sAnkqWUw8"
+
+     - mot: "Avril"
+       description: "Ok avec la main, de l'arriere de la machoire, jusqu'au menton"
+       lien: "https://www.youtube.com/watch?v=m8sAnkqWUw8"
+
+     - mot: "Mai"
+       description: "Doigt sous le nez (comme si on sentait) et qui glisse le
+       long de la bouche vers le bas"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Mai"
+
+     - mot: "Juin"
+       description: "Doigt qui glisse le long de la gorge"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Juin"
+
+     - mot: "Juillet"
+       description: "'Y' qui part du front et qui va vers l'avant deux fois (rotation)"
+       lien: "https://www.youtube.com/watch?v=m8sAnkqWUw8"
+
+     - mot: "Aout"
+       description: "Main en boule sur la tete"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Aout"
+
+     - mot: "Septembre"
+       description: "Ok hand a l'horizontal avec les deux mains, main droite au
+       niveau de la bouche et main gauche au niveau du ventre. Et mouvent de
+       haut en bas de la main droite"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Septembre"
+
+     - mot: "Octobre"
+       description: "O inverse au niveau du menton"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Octobre"
+
+     - mot: "Novembre"
+       description: "N inverse au niveau du menton"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Novembre"
+
+     - mot: "Decembre"
+       description: "D balaiement au niveau du menton"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Decembre"
+
+ - categorie: "Couleurs"
+   mots:
+     - mot: "Rouge"
+       description: "Doigt qui se plie deux fois au niveau des levres"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Rouge"
+
+     - mot: "Vert"
+       description: "V avec les doigts plies vers l'avant"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Vert"
+
+     - mot: "Gris"
+       description: "Un doigt qui se plie et deplie de gauche a droite"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Gris"
+
+     - mot: "Violet"
+       description: "V qui tourne"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Violet"
+
+     - mot: "Jaune"
+       description: "J bouche a oreille"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Jaune"
+
+     - mot: "Noir"
+       description: "N front qui glisse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/noir/n.m.-192733"
+
+     - mot: "Orange"
+       description: "Boule sur le front qui part vers l'exterieur"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/orangé/adj.-194582"
+
+     - mot: "Rose"
+       description: "R qui glisse sous le menton"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Rose"
+
+     - mot: "Bleu"
+       description: "Au revoir avec le pouce dans le creux de la main"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Bleu"
+
+     - mot: "Blanche"
+       description: "Faire une boule qui eclate au niveau du coup"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Blanc"
+
+     - mot: "Marron"
+       description: "Poing au niveau du menton dans le sens antihoraire"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Marron"
+
+     - mot: "Couleur"
+       description: "Main a plat qu'on bouge de droite a gauche en remuant les doigts"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/couleur/n.f.-148986"
+
+     - mot: "Clair"
+       description: "Les deux mains qui partent ensemble et qui eclatent"
+       lien : "https://dico.elix-lsf.fr/dictionnaire/Clair"
+
+     - mot: "Fonce"
+       description: "On absorbe avec ses deux mains"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/foncé/adj.-166164"
+
+ - categorie: "Verbes basiques"
+   mots:
+     - mot: "Manger"
+       description: "Main en pic qui va vers la bouche"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Manger"
+
+     - mot: "Boire"
+       description: "Signe de boire avec le pouche vers la bouche"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Boire"
+
+     - mot: "Aller"
+       description: "Les deux index qui vont en avant a l'horizontal"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Boire"
+
+     - mot: "Vouloir"
+       description: "Les deux mains en boules face vers le ciel qui descendent"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Vouloir"
+
+     - mot: "Pouvoir"
+       description: "Poings fermes et on casse les poignets vers l'avant"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Pouvoir"
+
+     - mot: "Avoir"
+       description: "Main a plat avec le pouce qui vient taper le torse"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Avoir"
+
+     - mot: "Faire"
+       description: "Main gauche fermee avec index sortit, main droite qui
+       'recupere le doigt'"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Faire"
+
+     - mot: "Dire"
+       description: "Ok hand qui part de la bouche et qui va vers l'avant"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Dire"
+
+     - mot: "Voir"
+       description: "V qui part des yeux"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Voir"
+
+ - categorie: "Pronoms"
+   mots:
+     - mot: "Je"
+       description: "On se pointe du doigt"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Je"
+
+     - mot: "Tu/Toi"
+       description: "On point du doigt"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Tu"
+
+     - mot: "Nous"
+       description: "Faire un cercle qui inclut tout le monde"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Nous"
+
+     - mot: "Vous"
+       description: "Arc de cercle en pointant les autres"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Vous"
+
+     - mot: "Ils"
+       description: "Cercle vers le bas en sens anti horaire"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Ils"
+
+     - mot: "Mon"
+       description: "V sur la poitrine"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Mon"
+
+     - mot: "Ton"
+       description: "V vers l'exterieur"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Ton"
+
+     - mot: "Notre"
+       description: "V poitrine, qui faire un cercle inverse et qui revient se
+       coller"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Notre"
+
+     - mot: "Votre"
+       description: "Plusieurs 'Ton'"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/Votre"
+
+ - categorie: "Mots interrogatifs"
+   mots:
+     - mot: "Pourquoi"
+       description: "Main ferme, index levee qui va et viens sur le cote de la tete"
+       lien: "https://youtu.be/CNPJ3oqXq0I?t=60"
+
+     - mot: "Qui"
+       description: "'Y' de droite a gauche"
+       lien: "https://youtu.be/CNPJ3oqXq0I?t=103"
+
+     - mot: "Quoi"
+       description: "Deux mains ecarte vers le ciel qui font des va et viens
+       vers l'exterieur"
+       lien: "https://youtu.be/CNPJ3oqXq0I?t=127"
+
+     - mot: "Comment"
+       description: "Mains a plat vers le bas et qui se retourne"
+       lien: "https://youtu.be/CNPJ3oqXq0I?t=141"
+
+     - mot: "Ou"
+       description: "Main en pique qui font des va et viens vers l'exterieur"
+       lien: "https://youtu.be/CNPJ3oqXq0I?t=171"
+
+ - categorie: "Alphabet"
+   mots:
+     - mot: "A"
+       description: "Poing avec le pouce qui sort"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "B"
+       description: "Main a plat en montrant la tranche"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "C"
+       description: "Forme de C avec la main"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "D"
+       description: "Forme de D avec la main avec l'index leve"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "E"
+       description: "Paume de la main avec les doigts plies"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "F"
+       description: "Doigts ecartees et pouce sur l'index"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "G"
+       description: "Main ferme avec pouce et index vers le haut (Comme si on
+       levait la main pour poser une question"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "H"
+       description: "Spider man mais vers la personne"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "I"
+       description: "Petit doigt leve"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "J"
+       description: "I qui 'creuse'"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "K"
+       description: "Peace avec la main avec le pouce qui touche le majeur et
+       dos de la main tournee vers la personne"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "L"
+       description: "L avec la main"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "M"
+       description: "Main a plat avec pouce rentrer, dos de la main vers la
+       personne et a l'horizontal"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "N"
+       description: "Comme le 'M' mais avec deux doigts et non quatre"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "O"
+       description: "O de la main"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "P"
+       description: "On fait un K, qui part de la tranche de la main et qui
+       descend en mettant le dos de la main vers la personne"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "Q"
+       description: "On fait un G et on vient pointer le sol avec sa main"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "R"
+       description: "On ferme la main sauf index et majeure que l'on vient
+       croiser"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "S"
+       description: "Poing de la main"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "T"
+       description: "Comme le F mais le pouce est de l'autre cote de l'index"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "U"
+       description: "Index et majeur colle paume vers la personne"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "V"
+       description: "Comme le U mais avec les doigts separe"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "W"
+       description: "Comme le V mais avec un troisieme doigt"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "X"
+       description: "On fait des guillemets avec les doigts"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "Y"
+       description: "Main fermee sauf pouce et petit doigt et la main fait un
+       mouvement vers le bas"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+     - mot: "Z"
+       description: "On dessine un Z dans l'air avec l'index"
+       lien: "https://www.youtube.com/watch?v=jg5zXcN2tlY"
+
+ - categorie: "Grammaire"
+   mots:
+     - mot: "Syntaxe"
+       description: "Temps + Lieu + Sujet + Action"
+       lien: "https://youtu.be"
