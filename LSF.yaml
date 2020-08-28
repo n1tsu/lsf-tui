@@ -215,6 +215,46 @@ categories:
        description: "D balaiement au niveau du menton"
        lien: "https://dico.elix-lsf.fr/dictionnaire/Decembre"
 
+     - mot: "Hier"
+       description: "Mouvement du pouce qui passe au dessus de l'epaule en arriere"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=45"
+
+     - mot: "Demain"
+       description: "Mouvement de hier mais en inverse"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=50"
+
+     - mot: "Aujourd'hui"
+       description: "Les deux mains a plat vers le ciel qui font un mouvement de haut en bas"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=53"
+
+     - mot: "Maintenant"
+       description: "Comme aujourd'hui mais en plus accelere et repete"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=56"
+
+     - mot: "Avant"
+       description: "Mouvement de la main a plat qui passe au dessus de l'epaule en arriere"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=62"
+
+     - mot: "Apres"
+       description: "Mouvement inverse de avant (grosso modo, main un peu plus a l'horizontal)"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=62"
+
+     - mot: "Matin"
+       description: "Main gauche a plat qui cache l'autre main et main droite qui monte avec le dos de la main vers la personne"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=64"
+
+     - mot: "Soir"
+       description: "Main gauche a plat a l'horizontal avec dos de la main vers la personne et main droite qui 'plonge devant'"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=66"
+
+     - mot: "Journee"
+       description: "Mouvement du matin et du soir a la suite"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=72"
+
+     - mot: "Midi"
+       description: "Maint a plat a la verticale devant la bouche avec la tranche de la main vers la personne"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=84"
+
  - categorie: "Couleurs"
    mots:
      - mot: "Rouge"
@@ -254,7 +294,7 @@ categories:
        lien: "https://dico.elix-lsf.fr/dictionnaire/Bleu"
 
      - mot: "Blanche"
-       description: "Faire une boule qui eclate au niveau du coup"
+       description: "Faire une boule qui eclate au niveau du cou"
        lien: "https://dico.elix-lsf.fr/dictionnaire/Blanc"
 
      - mot: "Marron"
@@ -311,6 +351,10 @@ categories:
      - mot: "Voir"
        description: "V qui part des yeux"
        lien: "https://dico.elix-lsf.fr/dictionnaire/Voir"
+
+     - mot: "Comprendre"
+       description: "Main fermee avec l'index, le majeur et le pouce qui viennent se rejoindre a la droite du front"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=35"
 
  - categorie: "Pronoms"
    mots:
