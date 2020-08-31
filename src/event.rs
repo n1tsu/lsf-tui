@@ -21,7 +21,7 @@ impl Events {
         let refresh_duration = Duration::from_millis(refresh_rate);
         let (tx, rx) = mpsc::channel();
 
-        let tick = {
+        let _tick = {
             let tx = tx.clone();
             thread::spawn(move || {
                 let mut t = 0;
@@ -33,7 +33,7 @@ impl Events {
             })
         };
 
-        let input = {
+        let _input = {
             let tx = tx.clone();
             thread::spawn(move || {
                 let stdin = io::stdin();
