@@ -2,11 +2,20 @@ use std::io::prelude::*;
 use std::fs::File;
 use yaml_rust::YamlLoader;
 
+/*
+ * Categorie and Word structure are clonable because
+ * we want to clone the vector of categories loaded
+ * by `load_file` to generate a new list containing
+ * all the words
+ */
+
+#[derive(Clone)]
 pub struct Categorie {
     pub name : String,
     pub words : Vec<Word>,
 }
 
+#[derive(Clone)]
 pub struct Word {
     pub name : String,
     pub description : String,
