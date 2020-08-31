@@ -6,9 +6,10 @@ use std::fs::File;
 
 use tui::Terminal;
 use tui::backend::TermionBackend;
-use tui::widgets::{Block, Borders, List, ListState, Text, Paragraph};
+use tui::widgets::{Block, Borders, List, ListState, Text, Paragraph, Tabs,};
 use tui::layout::{Layout, Constraint, Direction, Alignment};
 use tui::style::{Style, Color, Modifier};
+use tui::symbols::DOT;
 
 use termion::raw::IntoRawMode;
 use termion::event::Key;
@@ -132,6 +133,7 @@ fn main() -> Result<(), io::Error> {
 
     let events = Events::new(200);
     let mut states = ListChoice::new(categories.len());
+    let mut tab_index = 0;
 
     loop {
         match events.rx.try_recv() {
@@ -153,12 +155,24 @@ fn main() -> Result<(), io::Error> {
                         Key::Char('l') => {
                             states.focus_right(categories[states.cat_num].words.len());
                         }
+                        Key::Char('1') => {
+                            tab_index = 0;
+                        }
+                        Key::Char('2') => {
+                            tab_index = 1;
+                        }
                         _ => {}
                     };
                 };
 
                 terminal.draw(|mut f| {
                     let stdin = io::stdin();
+
+                    let vert_chunks = Layout::default()
+                        .direction(Direction::Vertical)
+                        .constraints([Constraint::Length(3), Constraint::Min(0)].as_ref())
+                        .split(f.size());
+
                     let chunks = Layout::default()
                         .direction(Direction::Horizontal)
                         .margin(1)
@@ -169,7 +183,7 @@ fn main() -> Result<(), io::Error> {
                                 Constraint::Percentage(60),
                             ].as_ref()
                         )
-                        .split(f.size());
+                        .split(vert_chunks[1]);
 
                     let cat_items = categories.iter().map(|i| Text::raw(&i.name));
                     let l = List::new(cat_items)
@@ -198,6 +212,15 @@ fn main() -> Result<(), io::Error> {
                         .wrap(true);
                     f.render_widget(para, chunks[2]);
 
+                    // Tabs
+                    let tabs = Tabs::default()
+                        .block(Block::default().title("Mode").borders(Borders::ALL))
+                        .titles(&["Dictionary", "Learn"])
+                        .style(Style::default().fg(Color::White))
+                        .highlight_style(Style::default().fg(Color::Yellow))
+                        .select(tab_index)
+                        .divider(DOT);
+                    f.render_widget(tabs, vert_chunks[0]);
                 });
             }
             _ => {},
