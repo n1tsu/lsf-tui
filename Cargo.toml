@@ -1,5 +1,5 @@
 [package]
-name = "test_event"
+name = "lsf_tui"
 version = "0.1.0"
 authors = ["Augustin Thiercelin <augustin.thiercelin@epita.fr>"]
 edition = "2018"
