@@ -1,5 +1,6 @@
 mod event;
 mod selection;
+mod loader;
 
 use std::io;
 use std::io::prelude::*;
@@ -19,50 +20,7 @@ use yaml_rust::YamlLoader;
 
 use event::{Events, Event};
 use selection::Selection;
-
-
-
-pub struct Categorie {
-    pub name : String,
-    pub words : Vec<Word>,
-}
-
-pub struct Word {
-    pub name : String,
-    pub description : String,
-    pub link : String,
-}
-
-fn load_file(file: &str) -> Vec<Categorie> {
-    let mut file = File::open(file).expect("Unable to open file");
-    let mut contents = String::new();
-
-    let mut res = Vec::new();
-
-    file.read_to_string(&mut contents)
-        .expect("Unable to read file");
-
-    let docs = YamlLoader::load_from_str(&contents).unwrap();
-    let doc = &docs[0];
-
-    for i in doc["categories"].as_vec().unwrap() {
-        let mut words = Vec::new();
-        for y in i["mots"].as_vec().unwrap() {
-            let word = Word {
-                name : String::from(y["mot"].as_str().unwrap()),
-                description : String::from(y["description"].as_str().unwrap()),
-                link : String::from(y["lien"].as_str().unwrap()),
-            };
-            words.push(word);
-        }
-        let categorie = Categorie {
-            name : String::from(i["categorie"].as_str().unwrap()),
-            words : words,
-        };
-        res.push(categorie);
-    }
-    res
-}
+use loader::load_file;
 
 fn main() -> Result<(), io::Error> {
 
