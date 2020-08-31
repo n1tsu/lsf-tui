@@ -1,4 +1,5 @@
 mod event;
+mod selection;
 
 use std::io;
 use std::io::prelude::*;
@@ -17,66 +18,9 @@ use termion::event::Key;
 use yaml_rust::YamlLoader;
 
 use event::{Events, Event};
+use selection::Selection;
 
-pub struct ListChoice {
-    pub categorie_state : ListState,
-    pub word_state : ListState,
-    pub cat_num : usize,
-    pub word_num : usize,
-    pub focus_num : usize,
-    pub words_len : usize,
-    pub cat_len : usize,
-}
 
-impl ListChoice {
-    pub fn new(size : usize) -> Self {
-        let mut res = Self {
-            categorie_state : ListState::default(),
-            word_state : ListState::default(),
-            cat_num : 0,
-            word_num : 0,
-            focus_num : 0,
-            words_len : 0,
-            cat_len : size,
-        };
-        res.categorie_state.select(Some(0));
-        res
-    }
-
-    pub fn focus_left(&mut self) {
-        self.focus_num = 0;
-        self.word_num = 0;
-        self.word_state.select(None);
-    }
-
-    pub fn focus_right(&mut self, w_size : usize) {
-        self.words_len = w_size;
-        self.focus_num = 1;
-        self.word_state.select(Some(self.word_num));
-    }
-
-    pub fn up(&mut self) {
-        if self.focus_num ==  0 {
-            self.cat_num = (self.cat_len + self.cat_num - 1) % self.cat_len;
-            self.categorie_state.select(Some(self.cat_num));
-        }
-        else {
-            self.word_num = (self.words_len + self.word_num - 1) % self.words_len;
-            self.word_state.select(Some(self.word_num));
-        }
-    }
-
-    pub fn down(&mut self) {
-        if self.focus_num ==  0 {
-            self.cat_num = (self.cat_num + 1) % self.cat_len;
-            self.categorie_state.select(Some(self.cat_num));
-        }
-        else {
-            self.word_num = (self.word_num + 1) % self.words_len;
-            self.word_state.select(Some(self.word_num));
-        }
-    }
-}
 
 pub struct Categorie {
     pub name : String,
@@ -132,7 +76,7 @@ fn main() -> Result<(), io::Error> {
     terminal.hide_cursor()?;
 
     let events = Events::new(200);
-    let mut states = ListChoice::new(categories.len());
+    let mut states = Selection::new(categories.len());
     let mut tab_index = 0;
 
     loop {
@@ -153,7 +97,7 @@ fn main() -> Result<(), io::Error> {
                             states.focus_left();
                         }
                         Key::Char('l') => {
-                            states.focus_right(categories[states.cat_num].words.len());
+                            states.focus_right(categories[states.get_categorie_index()].words.len());
                         }
                         Key::Char('1') => {
                             tab_index = 0;
@@ -193,7 +137,7 @@ fn main() -> Result<(), io::Error> {
                         .highlight_symbol(">>");
                     f.render_stateful_widget(l, chunks[0], &mut states.categorie_state);
 
-                    let items = categories[states.cat_num].words.iter().map(|i| Text::raw(&i.name));
+                    let items = categories[states.get_categorie_index()].words.iter().map(|i| Text::raw(&i.name));
                     let l = List::new(items)
                         .block(Block::default().title("Mots").borders(Borders::ALL))
                         .style(Style::default().fg(Color::White))
@@ -202,9 +146,9 @@ fn main() -> Result<(), io::Error> {
                     f.render_stateful_widget(l, chunks[1], &mut states.word_state);
 
                     let text = [
-                        Text::styled(format!("{}\n\n", &categories[states.cat_num].words[states.word_num].name), Style::default().fg(Color::Green).modifier(Modifier::BOLD)),
-                        Text::styled(format!("{}\n", &categories[states.cat_num].words[states.word_num].description), Style::default().fg(Color::Red)),
-                        Text::styled(format!("{}\n", &categories[states.cat_num].words[states.word_num].link), Style::default().fg(Color::Blue))];
+                        Text::styled(format!("{}\n\n", &categories[states.get_categorie_index()].words[states.get_word_index()].name), Style::default().fg(Color::Green).modifier(Modifier::BOLD)),
+                        Text::styled(format!("{}\n", &categories[states.get_categorie_index()].words[states.get_word_index()].description), Style::default().fg(Color::Red)),
+                        Text::styled(format!("{}\n", &categories[states.get_categorie_index()].words[states.get_word_index()].link), Style::default().fg(Color::Blue))];
                     let para = Paragraph::new(text.iter())
                         .block(Block::default().title("Paragraph").borders(Borders::ALL))
                         .style(Style::default().fg(Color::White).bg(Color::Black))
