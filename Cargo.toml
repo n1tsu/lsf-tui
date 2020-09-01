@@ -1,5 +1,5 @@
 [package]
-name = "test_event"
+name = "lsf_tui"
 version = "0.1.0"
 authors = ["Augustin Thiercelin <augustin.thiercelin@epita.fr>"]
 edition = "2018"
@@ -10,3 +10,4 @@ edition = "2018"
 tui = "0.9"
 termion = "1.5"
 yaml-rust = "0.4.4"
+rand = "0.7"
