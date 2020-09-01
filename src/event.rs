@@ -24,11 +24,11 @@ impl Events {
         let _tick = {
             let tx = tx.clone();
             thread::spawn(move || {
-                let mut t = 0;
+                let mut _t = 0;
                 loop {
-                tx.send(Event::Tick).unwrap_or_default();
-                t += refresh_rate;
-                thread::sleep(refresh_duration);
+                    tx.send(Event::Tick).unwrap_or_default();
+                    _t += refresh_rate;
+                    thread::sleep(refresh_duration);
                 }
             })
         };

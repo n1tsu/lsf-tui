@@ -4,12 +4,13 @@ mod loader;
 
 use rand::prelude::*;
 
+use std::convert::TryFrom;
 use std::io;
 use std::time::{Duration, Instant};
 
 // tui
 use tui::backend::TermionBackend;
-use tui::widgets::{Block, Borders, List, Text, Paragraph, Tabs,};
+use tui::widgets::{Block, Borders, List, Text, Paragraph, Tabs, Gauge};
 use tui::layout::{Layout, Constraint, Direction, Alignment};
 use tui::style::{Style, Color, Modifier};
 use tui::symbols::DOT;
@@ -92,6 +93,7 @@ fn main() -> Result<(), io::Error> {
             },
         }
     }
+    terminal.clear()?;
     Ok(())
 }
 
@@ -134,8 +136,10 @@ fn update(events: &Events, tab_index: &mut usize, states: &mut Selection, catego
                     }
                     // Change word index in learn
                     Key::Char('n') => {
-                        *word_index += 1;
-                        *help = false;
+                        if *word_index < WORDS_LEARN_SIZE - 1 {
+                            *word_index += 1;
+                            *help = false;
+                        }
                     }
                     // Display help in learn
                     Key::Char('m') => {
@@ -202,7 +206,7 @@ fn draw_dictionary(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerm
             Text::styled(format!("{}\n", &categories[states.get_categorie_index()].words[states.get_word_index()].description), Style::default().fg(Color::Red)),
             Text::styled(format!("{}\n", &categories[states.get_categorie_index()].words[states.get_word_index()].link), Style::default().fg(Color::Blue))];
         let para = Paragraph::new(text.iter())
-            .block(Block::default().title("Paragraph").borders(Borders::ALL))
+            .block(Block::default().title("Information").borders(Borders::ALL))
             .style(Style::default().fg(Color::White).bg(Color::Black))
             .alignment(Alignment::Center)
             .wrap(true);
@@ -224,7 +228,7 @@ fn draw_dictionary(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerm
         f.render_widget(para, chunks[2]);
         // Render tabs
         f.render_widget(tabs, vert_chunks[0]);
-    });
+    }).unwrap();
 }
 
 fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<io::Stdout>>>, words_set: &Vec<&Word>, time: &Duration, word_index: &usize, help: &mut bool) {
@@ -232,7 +236,7 @@ fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<
         // Create vertical chunks
         let vert_chunks = Layout::default()
             .direction(Direction::Vertical)
-            .constraints([Constraint::Length(3), Constraint::Min(0)].as_ref())
+            .constraints([Constraint::Length(3), Constraint::Min(0), Constraint::Length(4)].as_ref())
             .split(f.size());
 
         // Create horizontal chunks
@@ -260,7 +264,7 @@ fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<
         }
 
         let para = Paragraph::new(text.iter())
-            .block(Block::default().title("Paragraph").borders(Borders::ALL))
+            .block(Block::default().title("Word").borders(Borders::ALL))
             .style(Style::default().fg(Color::White).bg(Color::Black))
             .alignment(Alignment::Center)
             .wrap(true);
@@ -270,15 +274,15 @@ fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<
         let millis = time.as_millis() / 100 % 10;
         let text = [Text::styled(format!("{:?}.{} seconds\n\n", seconds, millis), Style::default().fg(Color::Green).modifier(Modifier::BOLD))];
         let time_text = Paragraph::new(text.iter())
-            .block(Block::default().title("Paragraph").borders(Borders::ALL))
+            .block(Block::default().title("Time").borders(Borders::ALL))
             .style(Style::default().fg(Color::White).bg(Color::Black))
             .alignment(Alignment::Center)
             .wrap(true);
 
         // Display the index of the word
-        let text = [Text::styled(format!("{}/{}\n\n", *word_index, WORDS_LEARN_SIZE), Style::default().fg(Color::Green).modifier(Modifier::BOLD))];
+        let text = [Text::styled(format!("{}/{}\n\n", *word_index + 1, WORDS_LEARN_SIZE), Style::default().fg(Color::Green).modifier(Modifier::BOLD))];
         let index_text = Paragraph::new(text.iter())
-            .block(Block::default().title("Paragraph").borders(Borders::ALL))
+            .block(Block::default().title("Progression").borders(Borders::ALL))
             .style(Style::default().fg(Color::White).bg(Color::Black))
             .alignment(Alignment::Center)
             .wrap(true);
@@ -292,6 +296,13 @@ fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<
             .select(1) // Select is hardcoded
             .divider(DOT);
 
+        // Create progression bar
+        let progression = u16::try_from((*word_index + 1) * 100).unwrap() / u16::try_from(WORDS_LEARN_SIZE).unwrap();
+        let gauge = Gauge::default()
+            .block(Block::default().title("Progression").borders(Borders::ALL))
+            .style(Style::default().fg(Color::Yellow))
+            .percent(progression);
+
 
         // Render index
         f.render_widget(index_text, chunks[0]);
@@ -301,5 +312,7 @@ fn draw_learn(terminal : &mut Terminal<TermionBackend<termion::raw::RawTerminal<
         f.render_widget(para, chunks[2]);
         // Render tabs
         f.render_widget(tabs, vert_chunks[0]);
-    });
+        // Render progression bar
+        f.render_widget(gauge, vert_chunks[2]);
+    }).unwrap();
 }
