@@ -255,6 +255,14 @@ categories:
        description: "Main à plat à la verticale devant la bouche avec la tranche de la main vers la personne"
        lien: "https://youtu.be/rz3jw0_XXoc?t=84"
 
+     - mot: "Bientot"
+       description: "Comme le mois de mai mais avec le pouce vers le haut qui s'ouvre et se referme"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=88"
+
+     - mot: "A tout a l'heure"
+       description: "Main fermée avec l'index sorti qui fait un crochet, et on vient taper son menton avec le coté de l'index"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=94"
+
  - categorie: "Couleurs"
    mots:
      - mot: "Rouge"
@@ -418,6 +426,20 @@ categories:
        description: "Main en pique qui font des va-et-vient vers l'extérieur"
        lien: "https://youtu.be/CNPJ3oqXq0I?t=171"
 
+     - mot: "Combien"
+       description: "Main en point devant sois avec les paumes vers sois, et on deplie les doigts progressivement
+       en commencant par l'index"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/combien/adv.-145897"
+
+     - mot: "Quand"
+       description: "Main gauche a plat la tranche vers la personne et on vient mettre l'index de l'autre main au milieu"
+       lien: "https://dico.elix-lsf.fr/dictionnaire/quand/adv.-204723"
+
+     - mot: "Que faire"
+       description: "Les deux mains en poings avec les pouces qui sortent, et mouvement des mains pour que les pouces
+       se touchent puis se separent plusieurs fois"
+       lien: "https://youtu.be/t4aThZY_zDA?t=261"
+
  - categorie: "Alphabet"
    mots:
      - mot: "A"
@@ -535,3 +557,60 @@ categories:
      - mot: "Syntaxe"
        description: "Temps + Lieu + Sujet + Action"
        lien: "https://youtu.be"
+
+ - categorie: "Personnes et status"
+   mots:
+     - mot: "Mademoiselle"
+       description: "On fait des 'ok hand' et on fait des ronds"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=100"
+
+     - mot: "Madame"
+       description: "Main droite a plat a l'horizontale doigts (un peu ?)
+       ecartés et pouce qui vient toucher le torse a gauche et qui va en direction de la droite"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=102"
+
+     - mot: "Monsieur"
+       description: "Index et pouce qui se rejoignent a droite du visage au niveau de la bouche"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=104"
+
+     - mot: "Homme"
+       description: "Index et pouce qui partent de la bouche et s'eloignent (comme pour faire une longue moustache)"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=106"
+
+     - mot: "Femme"
+       description: "Comme merci mais avec les doigts ecartés"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=108"
+
+     - mot: "Garcon"
+       description: "Main en poings avec pouce sorti et pouce qui glisse sur le front de gauche a droite"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=110"
+
+     - mot: "Fille"
+       description: "Merci mais avec seulement un doigt"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=114"
+
+     - mot: "Fils"
+       description: "Index et pouce qui se touche, les autres doigts ecartés, l'index et le pouce qui partent
+       du torse et qui s'eloignent"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=118"
+
+     - mot: "Marié"
+       description: "Main gauche ecartée et la main droite simule de mettre une bague"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=122"
+
+     - mot: "Divorcé"
+       description: "Comme marié mais on vient enlever la bague"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=124"
+
+     - mot: "Petit ami"
+       description: "Main gauche qui fait le telephone (ou y) avec paume vers le haut, et l'autre main meme chose
+       mais paume vers le bas et les petits doigts viennent se taper/caresser"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=126"
+
+     - mot: "Amour"
+       description: "Tous les doigts des mains qui se rejoignent en pic, et qui se collent en faisant des petits cercles"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=128"
+
+     - mot: "Maitresse"
+       description: "Main gauche a plat vers le haut, et main droite a plat qui part de la bouche et qui vient se plaquer sur l'autre"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=132"
