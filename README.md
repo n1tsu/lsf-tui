@@ -32,8 +32,17 @@ There is 3 modes :
 ## Usage
 
 ```sh
-# Run TUI application with mode 1 and 2.
-cargo run -yaml LSF.yaml
+USAGE:
+    lsf_tui [OPTIONS]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -b, --background <SECONDS>    Background mode with notifications [default: 10]
+    -c, --yaml <YAML>             YAML file containing words [default: LSF.yaml]
+
 ```
 
 *Press `1` to enter in dictionary mode*  
@@ -44,10 +53,5 @@ Next word using `n`
 Display help with `m`  
 
 *Press `q` to quit TUI*  
-
-``` sh
-# Run background mode with notifications every 10 seconds.
-cargo run -yaml LSF.yaml -background 10
-```
 
 ---

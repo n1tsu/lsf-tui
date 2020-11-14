@@ -10,6 +10,7 @@ args:
         help: YAML file containing words
         required: false
         takes_value: true
+        default_value: "LSF.yaml"
     - background:
         short: b
         long: background
@@ -17,3 +18,4 @@ args:
         help: Background mode with notifications
         required: false
         takes_value: true
+        default_value: "10"
