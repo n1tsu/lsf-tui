@@ -11,3 +11,5 @@ tui = "0.9"
 termion = "1.5"
 yaml-rust = "0.4.4"
 rand = "0.7"
+notify-rust = "4.0.0"
+clap = {version = "2.33.3", features = ["yaml"]}

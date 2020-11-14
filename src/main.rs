@@ -1,11 +1,16 @@
+#[macro_use]
+extern crate clap;
+
 mod event;
 mod selection;
 mod loader;
+mod args;
 
 use rand::prelude::*;
 
 use std::convert::TryFrom;
 use std::io;
+//use std::env;
 use std::time::{Duration, Instant};
 
 // tui
@@ -24,12 +29,11 @@ use termion::event::Key;
 use event::{Events, Event};
 use selection::Selection;
 use loader::{load_file, Categorie, Word};
+use args::{parse_arguments, Mode};
 
 
 // Number of words to learn for a session in tab 'Learn'
 static WORDS_LEARN_SIZE: usize = 20;
-
-
 
 fn main() -> Result<(), io::Error> {
     // Read yaml file
@@ -39,6 +43,15 @@ fn main() -> Result<(), io::Error> {
                               .flat_map(|c| c.words)
                               .collect::<Vec<Word>>();
 
+    // Retrieve arguments
+    let arguments = parse_arguments();
+    match arguments.mode {
+        Mode::TUI => tui_mode(categories, all_words),
+        Mode::Background(_) => Ok(()), // TODO background_mode(categories, all_words, sec),
+    }
+}
+
+fn tui_mode(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(), io::Error> {
     // Initialize terminal
     let stdout = io::stdout().into_raw_mode()?;
     let backend = TermionBackend::new(stdout);

@@ -1,0 +1,19 @@
+name: lsf-tui
+version: "1.0"
+author: n1tsu
+about: TUI application to help learn LSF
+args:
+    - yaml:
+        short: c
+        long: yaml
+        value_name: YAML
+        help: YAML file containing words
+        required: false
+        takes_value: true
+    - background:
+        short: b
+        long: background
+        value_name: SECONDS
+        help: Background mode with notifications
+        required: false
+        takes_value: true
