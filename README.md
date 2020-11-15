@@ -33,11 +33,12 @@ There is 3 modes :
 
 ```sh
 USAGE:
-    lsf_tui [OPTIONS]
+    lsf_tui [FLAGS] [OPTIONS]
 
 FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+    -d, --description    Show word description in notifications
+    -h, --help           Prints help information
+    -V, --version        Prints version information
 
 OPTIONS:
     -b, --background <SECONDS>    Background mode with notifications
