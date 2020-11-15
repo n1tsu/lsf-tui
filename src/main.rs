@@ -28,6 +28,6 @@ fn main() -> Result<(), io::Error> {
     let arguments = parse_arguments();
     match arguments.mode {
         Mode::TUI => tui_routine(categories, all_words),
-        Mode::Background(sec) => background_routine(sec, all_words),
+        Mode::Background(sec) => background_routine(sec, all_words, arguments.description),
     }
 }

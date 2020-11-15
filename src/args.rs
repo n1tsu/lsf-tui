@@ -8,6 +8,7 @@ pub enum Mode {
 pub struct Arguments {
     pub mode: Mode,
     pub yaml: String,
+    pub description: bool,
 }
 
 pub fn parse_arguments() -> Arguments {
@@ -15,6 +16,8 @@ pub fn parse_arguments() -> Arguments {
     let cli_yaml = load_yaml!("../cli.yml");
     let matches = App::from_yaml(cli_yaml).get_matches();
     let lsf_yaml = matches.value_of("yaml").unwrap_or("LSF.yaml");
+    let description = matches.is_present("description");
+
 
     let mode =
         if matches.is_present("background") {
@@ -28,5 +31,6 @@ pub fn parse_arguments() -> Arguments {
     Arguments {
         mode,
         yaml: lsf_yaml.to_string(),
+        description,
     }
 }

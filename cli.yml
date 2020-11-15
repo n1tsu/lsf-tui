@@ -1,6 +1,6 @@
 name: lsf-tui
 version: "1.0"
-author: n1tsu
+author: "n1tsu nitsu.gua@outlook.fr"
 about: TUI application to help learn LSF
 args:
     - yaml:
@@ -18,3 +18,9 @@ args:
         help: Background mode with notifications
         required: false
         takes_value: true
+    - description:
+        short: d
+        long: description
+        help: Show word description in notifications
+        requires: background
+        takes_value: false
