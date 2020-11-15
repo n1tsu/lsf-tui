@@ -83,7 +83,7 @@ enum UpdateState {
 
 fn update(events: &Events, tab_index: &mut usize, states: &mut Selection, categories: &Vec<Categorie>, word_index: &mut usize, help: &mut bool) -> UpdateState {
     // Try to receive an event, handle it if any, then just return
-    match events.rx.try_recv() {
+    match events.rx.recv() {
         // An event has been sent, let's handle it
         Ok(x) => {
             // If this event is an input, do some actions

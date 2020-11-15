@@ -40,9 +40,8 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -b, --background <SECONDS>    Background mode with notifications [default: 10]
+    -b, --background <SECONDS>    Background mode with notifications
     -c, --yaml <YAML>             YAML file containing words [default: LSF.yaml]
-
 ```
 
 *Press `1` to enter in dictionary mode*  

@@ -18,4 +18,3 @@ args:
         help: Background mode with notifications
         required: false
         takes_value: true
-        default_value: "10"

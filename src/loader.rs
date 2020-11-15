@@ -47,7 +47,7 @@ pub fn load_file(file: &str) -> Vec<Categorie> {
         }
         let categorie = Categorie {
             name : String::from(i["categorie"].as_str().unwrap()),
-            words : words,
+            words,
         };
         res.push(categorie);
     }

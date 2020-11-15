@@ -2,7 +2,7 @@ use clap::App;
 
 pub enum Mode {
     TUI,
-    Background(i64),
+    Background(u64),
 }
 
 pub struct Arguments {
@@ -19,7 +19,7 @@ pub fn parse_arguments() -> Arguments {
     let mode =
         if matches.is_present("background") {
             let str_seconds = matches.value_of("background").unwrap_or("30");
-            let int_seconds = str_seconds.parse::<i64>().unwrap();
+            let int_seconds = str_seconds.parse::<u64>().unwrap();
             Mode::Background(int_seconds)
         } else {
             Mode::TUI
