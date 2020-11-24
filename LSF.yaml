@@ -645,6 +645,11 @@ categories:
        description: "Sourire mais avec les deux mains qui font des va et viens de gauche a droite."
        lien: "https://youtu.be/rz3jw0_XXoc?t=156"
 
+     - mot: "Centre"
+       description: "Main gauche a plat paume vers le ciel, mais droite avec le pouce sortit qui
+       vient taper le pouce dans la paume."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=216"
+
  - categorie: "LSF"
    mots:
      - mot: "Sourd"
@@ -683,3 +688,88 @@ categories:
      - mot: "Eleve"
        description: "Index de la main droite un peu courbé qui vient taper la joue."
        lien: "https://youtu.be/rz3jw0_XXoc?t=177"
+
+ - categorie: "Objets"
+   mots:
+     - mot: "Telephone"
+       description: "Mime du telephone avec pouce et auriculaire."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=181"
+
+     - mot: "Portable"
+       description: "'D' au niveau de la bouche."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=183"
+
+ - categorie: "Paysage"
+   mots:
+     - mot: "Maison"
+       description: "Les deux mains a plats qui se rejoignent pour faire un toit."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=187"
+
+     - mot: "Porte"
+       description: "Deux a plat dos vers la personne, comme pour faire un mur, et
+       mime d'une porte qui s'ouvre avec la main droite."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=190"
+
+     - mot: "Fenetre"
+       description: "Comme la porte mais sans le majeur et l'annulaire et mimer
+       l'ouverture avec les deux mains."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=193"
+
+     - mot: "Campagne"
+       description: "Bras gauche a l'horizontal et main droite qui vient frotter
+       le coude mais sans le toucher."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=195"
+
+     - mot: "Arbre"
+       description: "Bras gauche a l'horizontal et bras droit qui vient poser sont coude
+       sur la main en faisant des rotations."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=197"
+
+     - mot: "Herbe"
+       description: "Les mains qui font des '4' avec la main droite devant la main gauche,
+       et la main droite avance en agitant les doigts."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=201"
+
+     - mot: "Terre"
+       description: "Mains en pique l'une vers l'autre, avec la main droite qui fait des va
+       et viens d'avant en arriere en raclant le bout de l'autre main."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=204"
+
+     - mot: "Tremblement de terre"
+       description: "Mains a plat a l'horizontal qui s'agitent."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=207"
+
+     - mot: "Village"
+       description: "Mains qui font des '2' et qui montent et descendent a l'horizontal."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=209"
+
+     - mot: "Ville"
+       description: "Mains qui font des deux, avec la face vers la personne, et qui se retournent
+       pour mettre la paume vers la personne."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=212"
+
+     - mot: "Immeuble"
+       description: "Mains avec l'index et le pouce sortit qui font un carre et qui montent
+       (comme pour mimer un immeuble)."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=220"
+
+     - mot: "Planete"
+       description: "Mime d'une boule avec ses deux mains."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=222"
+
+     - mot: "Mer"
+       description: "Mains a l'horizontal paumes vers le sol qui font des vagues en s'ecartant."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=225"
+
+     - mot: "Plage"
+       description: "Mains a l'horizontal paumes vers le sol, qui s'ecartent en agitant les doigts."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=229"
+
+     - mot: "Riviere"
+       description: "Mains qui font des 'R' et qui avancent en pointant la personne et en faisant des
+       ondulations."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=232"
+
+     - mot: "Soleil"
+       description: "Main qui fait une demi boule au dessus de la tete et qui s'agite."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=234"
