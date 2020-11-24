@@ -614,3 +614,72 @@ categories:
      - mot: "Maitresse"
        description: "Main gauche a plat vers le haut, et main droite a plat qui part de la bouche et qui vient se plaquer sur l'autre"
        lien: "https://youtu.be/rz3jw0_XXoc?t=132"
+
+ - categorie: "Etats"
+   mots:
+     - mot: "Fatigué"
+       description: "Les deux mains vers le haut qui vont vers le bas en se refermant en pic."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=139"
+
+     - mot: "Forme"
+       description: "Index et majeur de la main droite collés qui viennent sur le menton."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=142"
+
+     - mot: "Content"
+       description: "Frottement de la main droite sur le torse"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=144"
+
+     - mot: "Pas content"
+       description: "Main qui part du torse et qui fait un non avec l'index"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=148"
+
+     - mot: "Trise"
+       description: "Boule avec la main droite sur le visage qui descend."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=150"
+
+     - mot: "Sourire"
+       description: "Index et pouce qui s'ecartent au niveau de la bouche pour faire un sourire."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=154"
+
+     - mot: "Rire"
+       description: "Sourire mais avec les deux mains qui font des va et viens de gauche a droite."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=156"
+
+ - categorie: "LSF"
+   mots:
+     - mot: "Sourd"
+       description: "Index qui va de l'oreille a la bouche."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=159"
+
+     - mot: "Entendant"
+       description: "Index et majeur en 'V' qui viennet taper sur la joue, dos de la main vers la personne."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=162"
+
+     - mot: "Mal entendant"
+       description: "Main en pince qui part de la tempe, et qui s'eloigne en se fermant et s'ouvrant de facon repété."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=164"
+
+     - mot: "Mal entendant"
+       description: "Main en pince qui part de la tempe, et qui s'eloigne en se fermant et s'ouvrant de facon repété."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=166"
+
+     - mot: "Formation"
+       description: "Mains qui se rejoinent pour faire un puit."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=168"
+
+     - mot: "Formateur"
+       description: "Mains en pique collées et qui pointent vers la personne, qui viennent eclater."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=170"
+
+     - mot: "Stage"
+       description: "Main droite en poing au niveau de la tete et paume vers la personne, qui se retourne pour mettre
+       la paume vers soi."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=172"
+
+     - mot: "Stagiaire"
+       description: "Comme 'stage' mais de facon repétée."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=174"
+
+     - mot: "Eleve"
+       description: "Index de la main droite un peu courbé qui vient taper la joue."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=177"
