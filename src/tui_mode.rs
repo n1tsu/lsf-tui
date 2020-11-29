@@ -1,7 +1,7 @@
 use rand::prelude::*;
 
 use std::io;
-use std::time::Instant;
+use std::time::{Duration, Instant};
 
 // tui
 use tui::backend::TermionBackend;
@@ -39,13 +39,20 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
     // is 1 we were on tab 1 on last loop.
     let mut swap = 0;
     let mut begin = Instant::now();
-    let mut words_set = vec![];
     let mut words_learn_set: Vec<(&Word, WordState)> = vec![];
     let mut help = false;
+    let mut time = Duration::new(0, 0);
 
     loop {
         // Call update function and quit if it return 'Stop'
-        match update(&events, &mut tab_index, &mut states, &categories, &mut help) {
+        match update(
+            &events,
+            &mut tab_index,
+            &mut states,
+            &categories,
+            &mut help,
+            &mut words_learn_set,
+        ) {
             UpdateState::Stop => break,
             // Refresh the TUI widgets
             UpdateState::Continue => {
@@ -63,7 +70,8 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
                         let mut rng = rand::thread_rng();
                         // words_set = all_words.iter().choose_multiple(&mut rng, WORDS_LEARN_SIZE);
                         let cat_index = states.get_categorie_index();
-                        words_set = categories[cat_index].words.iter().collect::<Vec<&Word>>();
+                        let mut words_set =
+                            categories[cat_index].words.iter().collect::<Vec<&Word>>();
                         words_set.shuffle(&mut rng);
                         words_learn_set = words_set
                             .iter()
@@ -78,7 +86,9 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
                     }
                     // Calculate time since swap
                     let now = Instant::now();
-                    let time = now.duration_since(begin);
+                    if !states.is_done() {
+                        time = now.duration_since(begin);
+                    }
 
                     // Draw the learn mode
                     draw_learn(
@@ -108,6 +118,7 @@ fn update(
     states: &mut Selection,
     categories: &[Categorie],
     help: &mut bool,
+    words_learn_set: &mut Vec<(&Word, WordState)>,
 ) -> UpdateState {
     // Try to receive an event, handle it if any, then just return
     if let Ok(x) = events.rx.recv() {
@@ -117,7 +128,7 @@ fn update(
             if *tab_index == 0 {
                 return input_tab_one(input, states, tab_index, categories);
             } else if *tab_index == 1 {
-                return input_tab_two(input, states, help, tab_index, categories);
+                return input_tab_two(input, states, help, tab_index, categories, words_learn_set);
             } else {
                 panic!("Tab index is invalid !")
             }
@@ -165,6 +176,7 @@ fn input_tab_two(
     help: &mut bool,
     tab_index: &mut usize,
     categories: &[Categorie],
+    words_learn_set: &mut Vec<(&Word, WordState)>,
 ) -> UpdateState {
     match input {
         // Change tabs
@@ -176,16 +188,25 @@ fn input_tab_two(
         // Change word index in learn
         Key::Char('n') => {
             let cat_index = states.get_categorie_index();
+
+            // Change word state
+            if words_learn_set[states.get_word_index()].1 != WordState::Failed {
+                words_learn_set[states.get_word_index()].1 = WordState::Valided;
+            }
+
             // If the index is over total words in categorie
             if states.get_word_index() < categories[cat_index].words.len() - 1 {
                 states.down();
                 *help = false;
+                words_learn_set[states.get_word_index()].1 = WordState::Current;
             } else {
                 states.set_done()
             }
         }
         // Display help in learn
         Key::Char('h') => {
+            // Change word state
+            words_learn_set[states.get_word_index()].1 = WordState::Failed;
             *help = !*help;
         }
         _ => {}

@@ -16,9 +16,10 @@ use tui::Terminal;
 use crate::loader::{Categorie, Word};
 use crate::selection::Selection;
 
+#[derive(PartialEq)]
 pub enum WordState {
-    Confirmed,
-    Passed,
+    Valided,
+    Failed,
     Current,
     Next,
 }
@@ -61,7 +62,7 @@ pub fn draw_dictionary(
     categories: &[Categorie],
 ) {
     terminal
-        .draw(|mut f| {
+        .draw(|f| {
             // Create vertical chunks
             let vert_chunks = Layout::default()
                 .direction(Direction::Vertical)
@@ -86,7 +87,7 @@ pub fn draw_dictionary(
             let cat_items: Vec<ListItem> = categories
                 .iter()
                 .map(|i| {
-                    let mut lines = vec![Spans::from(Span::raw(&i.name))];
+                    let lines = vec![Spans::from(Span::raw(&i.name))];
                     ListItem::new(lines).style(Style::default().fg(Color::Black).bg(Color::White))
                 })
                 .collect();
@@ -102,7 +103,7 @@ pub fn draw_dictionary(
                 .words
                 .iter()
                 .map(|i| {
-                    let mut lines = vec![Spans::from(Span::raw(&i.name))];
+                    let lines = vec![Spans::from(Span::raw(&i.name))];
                     ListItem::new(lines).style(Style::default().fg(Color::Black).bg(Color::White))
                 })
                 .collect();
@@ -185,7 +186,7 @@ pub fn draw_learn(
     help: &mut bool,
 ) {
     terminal
-        .draw(|mut f| {
+        .draw(|f| {
             // Create vertical chunks
             let vert_chunks = Layout::default()
                 .direction(Direction::Vertical)
@@ -310,14 +311,16 @@ pub fn draw_learn(
                 .iter()
                 .map(|(word, status)| {
                     let s = match status {
-                        WordState::Passed => Style::default()
+                        WordState::Failed => Style::default()
                             .bg(Color::Red)
                             .add_modifier(Modifier::CROSSED_OUT),
-                        WordState::Confirmed => Style::default()
+                        WordState::Valided => Style::default()
                             .bg(Color::Green)
                             .add_modifier(Modifier::CROSSED_OUT),
-                        WordState::Current => Style::default().fg(Color::Gray),
-                        _ => Style::default(),
+                        WordState::Current => Style::default()
+                            .fg(Color::Gray)
+                            .add_modifier(Modifier::BOLD),
+                        _ => Style::default().add_modifier(Modifier::HIDDEN),
                     };
                     let lines = vec![Spans::from(Span::styled(word.name.to_string(), s))];
                     ListItem::new(lines)
@@ -333,10 +336,12 @@ pub fn draw_learn(
             // Render final pop-up
             if states.is_done() {
                 let size = f.size();
-                let block = Block::default().title("Done").borders(Borders::ALL);
+                let text = vec![Spans::from(Span::raw("pouet pouet"))];
+                let paragraph = Paragraph::new(text)
+                    .block(Block::default().title("Done").borders(Borders::ALL));
                 let area = centered_rect(60, 20, size);
                 f.render_widget(Clear, area); //this clears out the background
-                f.render_widget(block, area);
+                f.render_widget(paragraph, area);
             }
         })
         .unwrap();
