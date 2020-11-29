@@ -22,7 +22,7 @@ impl Selection {
             focus_num: 0,
             words_len: 0,
             cat_len: size,
-            done: false
+            done: false,
         };
         res.categorie_state.select(Some(0));
         res

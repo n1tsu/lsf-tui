@@ -8,8 +8,8 @@ use tui::backend::TermionBackend;
 use tui::layout::{Alignment, Constraint, Direction, Layout, Rect};
 use tui::style::{Color, Modifier, Style};
 use tui::symbols::DOT;
-use tui::widgets::{Block, Borders, Gauge, List, Paragraph, Tabs, Clear, ListItem, Wrap};
 use tui::text::{Span, Spans};
+use tui::widgets::{Block, Borders, Clear, Gauge, List, ListItem, Paragraph, Tabs, Wrap};
 use tui::Terminal;
 
 // local modules
@@ -83,7 +83,8 @@ pub fn draw_dictionary(
                 .split(vert_chunks[1]); // These chunks are in the second vertical chunk
 
             // Create list of categories
-            let cat_items: Vec<ListItem> = categories.iter()
+            let cat_items: Vec<ListItem> = categories
+                .iter()
                 .map(|i| {
                     let mut lines = vec![Spans::from(Span::raw(&i.name))];
                     ListItem::new(lines).style(Style::default().fg(Color::Black).bg(Color::White))
@@ -116,28 +117,28 @@ pub fn draw_dictionary(
             // - Word
             // - How to do it in LSF
             // - Link to video
-            let mut text = vec![Spans::from(Span::styled(
-                format!(
-                    "{}\n\n",
-                    &categories[states.get_categorie_index()].words[states.get_word_index()]
+            let text = vec![
+                Spans::from(Span::styled(
+                    categories[states.get_categorie_index()].words[states.get_word_index()]
                         .name
-                ),
-                Style::default().fg(Color::Green).add_modifier(Modifier::BOLD),
-            ))];
-            text.push(Spans::from(Span::styled(
-                format!(
-                    "{}\n",
-                    &categories[states.get_categorie_index()].words[states.get_word_index()]
+                        .to_string(),
+                    Style::default()
+                        .fg(Color::Green)
+                        .add_modifier(Modifier::BOLD),
+                )),
+                Spans::from(Span::styled(
+                    categories[states.get_categorie_index()].words[states.get_word_index()]
                         .description
-                ),
-                Style::default().fg(Color::Red))));
-            text.push(Spans::from(Span::styled(
-                format!(
-                    "{}\n",
-                    &categories[states.get_categorie_index()].words[states.get_word_index()]
+                        .to_string(),
+                    Style::default().fg(Color::Red),
+                )),
+                Spans::from(Span::styled(
+                    categories[states.get_categorie_index()].words[states.get_word_index()]
                         .link
-                ),
-                Style::default().fg(Color::Blue))));
+                        .to_string(),
+                    Style::default().fg(Color::Blue),
+                )),
+            ];
 
             let para = Paragraph::new(text)
                 .block(Block::default().title("Information").borders(Borders::ALL))
@@ -147,8 +148,14 @@ pub fn draw_dictionary(
 
             // Create the tabs
             let titles = vec![
-                Spans::from(vec![Span::styled("Dictionary", Style::default().fg(Color::Yellow))]),
-                Spans::from(vec![Span::styled("Learn", Style::default().fg(Color::Green))])
+                Spans::from(vec![Span::styled(
+                    "Dictionary",
+                    Style::default().fg(Color::Yellow),
+                )]),
+                Spans::from(vec![Span::styled(
+                    "Learn",
+                    Style::default().fg(Color::Green),
+                )]),
             ];
 
             let tabs = Tabs::new(titles)
@@ -208,19 +215,26 @@ pub fn draw_learn(
 
             let word_index = states.get_word_index();
             // Display of the word
-            let text = Spans::from(vec![Span::styled(
-                format!("{}\n\n", words_learn_set[word_index].0.name),
-                Style::default().fg(Color::Green).add_modifier(Modifier::BOLD),
-            ),
-            Span::styled(
-                format!("{}\n", words_learn_set[word_index].0.description),
-                Style::default().fg(Color::Red),
-            ),
-            Span::styled(
-                format!("{}\n", words_learn_set[word_index].0.link),
-                Style::default().fg(Color::Blue),
-            )
-            ]);
+            let mut text = vec![Spans::from(Span::styled(
+                words_learn_set[word_index].0.name.to_string(),
+                Style::default()
+                    .fg(Color::Green)
+                    .add_modifier(Modifier::BOLD),
+            ))];
+
+            if *help {
+                let description_style = Style::default().fg(Color::Red);
+                let link_style = Style::default().fg(Color::Blue);
+
+                text.push(Spans::from(Span::styled(
+                    words_learn_set[word_index].0.description.to_string(),
+                    description_style,
+                )));
+                text.push(Spans::from(Span::styled(
+                    words_learn_set[word_index].0.link.to_string(),
+                    link_style,
+                )));
+            }
 
             let para = Paragraph::new(text)
                 .block(Block::default().title("Word").borders(Borders::ALL))
@@ -231,21 +245,23 @@ pub fn draw_learn(
             // Display of the time since the beginning
             let seconds = time.as_secs();
             let millis = time.as_millis() / 100 % 10;
-            let text = Spans::from(vec![Span::styled(
-                format!("{:?}.{} seconds\n\n", seconds, millis),
-                Style::default().fg(Color::Green).add_modifier(Modifier::BOLD),
-            )]);
-            let time_text = Paragraph::new(text)
-                .block(Block::default().title("Time").borders(Borders::ALL))
-                .style(Style::default().fg(Color::White).bg(Color::Black))
-                .alignment(Alignment::Center)
-                .wrap(Wrap { trim: true });
 
             // Display the index of the word
-            let text = Spans::from(vec![Span::styled(
-                format!("{}/{}\n\n", word_index + 1, words_learn_set.len()),
-                Style::default().fg(Color::Green).add_modifier(Modifier::BOLD),
-            )]);
+            let text = vec![
+                Spans::from(Span::styled(
+                    format!("{}/{}", word_index + 1, words_learn_set.len()),
+                    Style::default()
+                        .fg(Color::Green)
+                        .add_modifier(Modifier::BOLD),
+                )),
+                Spans::from(Span::raw("")),
+                Spans::from(Span::styled(
+                    format!("{:?}.{} seconds", seconds, millis),
+                    Style::default()
+                        .fg(Color::Yellow)
+                        .add_modifier(Modifier::ITALIC),
+                )),
+            ];
 
             let index_text = Paragraph::new(text)
                 .block(Block::default().title("Progression").borders(Borders::ALL))
@@ -255,8 +271,14 @@ pub fn draw_learn(
 
             // Create the tabs
             let titles = vec![
-                Spans::from(vec![Span::styled("Dictionary", Style::default().fg(Color::Yellow))]),
-                Spans::from(vec![Span::styled("Learn", Style::default().fg(Color::Green))])
+                Spans::from(vec![Span::styled(
+                    "Dictionary",
+                    Style::default().fg(Color::Yellow),
+                )]),
+                Spans::from(vec![Span::styled(
+                    "Learn",
+                    Style::default().fg(Color::Green),
+                )]),
             ];
 
             let tabs = Tabs::new(titles)
@@ -271,13 +293,12 @@ pub fn draw_learn(
                 / u16::try_from(words_learn_set.len()).unwrap();
             let gauge = Gauge::default()
                 .block(Block::default().title("Progression").borders(Borders::ALL))
+                .gauge_style(Style::default().fg(Color::Yellow))
                 .style(Style::default().fg(Color::Yellow))
                 .percent(progression);
 
             // Render index
             f.render_widget(index_text, chunks[0]);
-            // Render time
-            f.render_widget(time_text, chunks[1]);
             // Render information about the word
             f.render_widget(para, chunks[2]);
             // Render tabs
@@ -289,21 +310,24 @@ pub fn draw_learn(
                 .iter()
                 .map(|(word, status)| {
                     let s = match status {
-                        WordState::Passed => Style::default().bg(Color::Red),
-                        WordState::Confirmed => Style::default().bg(Color::Green),
+                        WordState::Passed => Style::default()
+                            .bg(Color::Red)
+                            .add_modifier(Modifier::CROSSED_OUT),
+                        WordState::Confirmed => Style::default()
+                            .bg(Color::Green)
+                            .add_modifier(Modifier::CROSSED_OUT),
                         WordState::Current => Style::default().fg(Color::Gray),
                         _ => Style::default(),
                     };
-                    let mut lines = vec![Spans::from(Span::styled(
-                        format!("{}", word.name), s
-                    ))];
+                    let lines = vec![Spans::from(Span::styled(word.name.to_string(), s))];
                     ListItem::new(lines)
                 })
                 .collect();
 
-            let words_list = List::new(words)
-                .block(Block::default().borders(Borders::ALL).title("Words"));
+            let words_list =
+                List::new(words).block(Block::default().borders(Borders::ALL).title("Words"));
 
+            // Render list of words
             f.render_widget(words_list, chunks[1]);
 
             // Render final pop-up

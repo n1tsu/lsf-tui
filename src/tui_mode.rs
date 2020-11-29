@@ -65,9 +65,10 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
                         let cat_index = states.get_categorie_index();
                         words_set = categories[cat_index].words.iter().collect::<Vec<&Word>>();
                         words_set.shuffle(&mut rng);
-                        words_learn_set = words_set.iter().map(|&word| {
-                            (word, WordState::Next)
-                        }).collect();
+                        words_learn_set = words_set
+                            .iter()
+                            .map(|&word| (word, WordState::Next))
+                            .collect();
 
                         // Dirty hacks
                         states.reset_word_index();
@@ -80,7 +81,13 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
                     let time = now.duration_since(begin);
 
                     // Draw the learn mode
-                    draw_learn(&mut terminal, &mut words_learn_set, &mut states, &time, &mut help);
+                    draw_learn(
+                        &mut terminal,
+                        &mut words_learn_set,
+                        &mut states,
+                        &time,
+                        &mut help,
+                    );
                     swap = 1;
                 }
             }
@@ -173,7 +180,9 @@ fn input_tab_two(
             if states.get_word_index() < categories[cat_index].words.len() - 1 {
                 states.down();
                 *help = false;
-            } else { states.set_done()}
+            } else {
+                states.set_done()
+            }
         }
         // Display help in learn
         Key::Char('h') => {
