@@ -1,8 +1,20 @@
 # Terminal UI program to help learn LSF.
 
+[![asciicast](https://asciinema.org/a/hbrZt3imcFYkFgzNX1EJ7n9tj.svg)](https://asciinema.org/a/hbrZt3imcFYkFgzNX1EJ7n9tj)
+
+## Modes
+
+There is 3 modes :
+
+1. *Dictionary* : TUI to navigate between words.
+2. *Learning*   : TUI trial mode on words from a category.
+3. *Background* : Desktop notifications every **X** seconds to challenge ourselves.
+
+---
+
 ## Words file
 
-Provide a `yaml` file with the following structure :
+Words are load from `yaml` file with the following structure :
 
 ```yaml
 categories:
@@ -14,18 +26,6 @@ categories:
       ...
   ...
 ```
-
----
-
-## Modes
-
-There is 3 modes :
-
-1. *Dictionary* : TUI to navigate between words.
-2. *Learning*   : TUI random set of word to challenge ourselves.
-3. *Background* : Desktop notifications every **X** seconds to challenge ourselves.
-
-[![asciicast](https://asciinema.org/a/372952.svg)](https://asciinema.org/a/372952)
 
 ---
 
@@ -50,7 +50,7 @@ Navigate using `h,j,k,l`
 
 *Press `2` to enter in learn mode*  
 Next word using `n`  
-Display help with `m`  
+Display help with `h`  
 
 *Press `q` to quit TUI*  
 
