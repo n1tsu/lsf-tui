@@ -9,6 +9,7 @@ pub struct Selection {
     focus_num: usize,
     words_len: usize,
     cat_len: usize,
+    done: bool,
 }
 
 impl Selection {
@@ -21,9 +22,18 @@ impl Selection {
             focus_num: 0,
             words_len: 0,
             cat_len: size,
+            done: false
         };
         res.categorie_state.select(Some(0));
         res
+    }
+
+    pub fn set_done(&mut self) {
+        self.done = true;
+    }
+
+    pub fn is_done(&self) -> bool {
+        self.done
     }
 
     // Change focus on left chunk
@@ -62,10 +72,6 @@ impl Selection {
         }
     }
 
-    pub fn set_focus_words(&mut self) {
-        self.focus_num = 1;
-    }
-
     pub fn reset_word_index(&mut self) {
         self.word_num = 0;
     }
@@ -78,5 +84,13 @@ impl Selection {
     // Getter for actual word index
     pub fn get_word_index(&self) -> usize {
         self.word_num
+    }
+
+    pub fn reset(&mut self) {
+        self.cat_num = 0;
+        self.word_num = 0;
+        self.focus_num = 0;
+        self.words_len = 0;
+        self.done = false;
     }
 }

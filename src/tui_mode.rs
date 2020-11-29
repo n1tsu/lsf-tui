@@ -50,6 +50,9 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
             UpdateState::Continue => {
                 if tab_index == 0 {
                     // Draw the dictionary mode
+                    if swap == 1 {
+                        states.reset();
+                    }
                     draw_dictionary(&mut terminal, &mut states, &categories);
                     swap = 0;
                 } else if tab_index == 1 {
@@ -163,10 +166,10 @@ fn input_tab_two(
         Key::Char('n') => {
             let cat_index = states.get_categorie_index();
             // If the index is over total words in categorie
-            if states.get_word_index() < categories[cat_index].words.len() {
+            if states.get_word_index() < categories[cat_index].words.len() - 1 {
                 states.down();
                 *help = false;
-            }
+            } else { states.set_done()}
         }
         // Display help in learn
         Key::Char('h') => {

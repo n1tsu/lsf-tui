@@ -5,10 +5,10 @@ use std::time::Duration;
 
 // tui
 use tui::backend::TermionBackend;
-use tui::layout::{Alignment, Constraint, Direction, Layout};
+use tui::layout::{Alignment, Constraint, Direction, Layout, Rect};
 use tui::style::{Color, Modifier, Style};
 use tui::symbols::DOT;
-use tui::widgets::{Block, Borders, Gauge, List, Paragraph, Tabs, Text};
+use tui::widgets::{Block, Borders, Gauge, List, Paragraph, Tabs, Text, Clear};
 use tui::Terminal;
 
 // local modules
@@ -17,6 +17,33 @@ use crate::selection::Selection;
 
 // Number of words to learn for a session in tab 'Learn'
 // pub static WORDS_LEARN_SIZE: usize = 20;
+
+// Function from tui-rs example source
+fn centered_rect(percent_x: u16, percent_y: u16, r: Rect) -> Rect {
+    let popup_layout = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints(
+            [
+                Constraint::Percentage((100 - percent_y) / 2),
+                Constraint::Percentage(percent_y),
+                Constraint::Percentage((100 - percent_y) / 2),
+            ]
+            .as_ref(),
+        )
+        .split(r);
+
+    Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(
+            [
+                Constraint::Percentage((100 - percent_x) / 2),
+                Constraint::Percentage(percent_x),
+                Constraint::Percentage((100 - percent_x) / 2),
+            ]
+            .as_ref(),
+        )
+        .split(popup_layout[1])[1]
+}
 
 // Draw dictionary tab
 // Terminal type is ugly af :)
@@ -236,6 +263,14 @@ pub fn draw_learn(
             f.render_widget(tabs, vert_chunks[0]);
             // Render progression bar
             f.render_widget(gauge, vert_chunks[2]);
+
+            if states.is_done() {
+                let size = f.size();
+                let block = Block::default().title("Done").borders(Borders::ALL);
+                let area = centered_rect(60, 20, size);
+                f.render_widget(Clear, area); //this clears out the background
+                f.render_widget(block, area);
+            }
         })
         .unwrap();
 }
