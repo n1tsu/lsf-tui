@@ -92,59 +92,76 @@ fn update(
     events: &Events,
     tab_index: &mut usize,
     states: &mut Selection,
-    categories: &Vec<Categorie>,
+    categories: &[Categorie],
     word_index: &mut usize,
     help: &mut bool,
 ) -> UpdateState {
     // Try to receive an event, handle it if any, then just return
-    match events.rx.recv() {
+    if let Ok(x) = events.rx.recv() {
         // An event has been sent, let's handle it
-        Ok(x) => {
-            // If this event is an input, do some actions
-            if let Event::Input(input) = x {
-                match input {
-                    // Quit
-                    Key::Char('q') => return UpdateState::Stop,
-                    // Move selection
-                    Key::Char('j') => {
-                        states.down();
-                    }
-                    Key::Char('k') => {
-                        states.up();
-                    }
-                    Key::Char('h') => {
-                        states.focus_left();
-                    }
-                    Key::Char('l') => {
-                        states.focus_right(categories[states.get_categorie_index()].words.len());
-                    }
-                    // Change tabs
-                    Key::Char('1') => {
-                        *tab_index = 0;
-                    }
-                    Key::Char('2') => {
-                        *tab_index = 1;
-                    }
-                    // Change word index in learn
-                    Key::Char('n') => {
-                        if *word_index < WORDS_LEARN_SIZE - 1 {
-                            *word_index += 1;
-                            *help = false;
-                        }
-                    }
-                    // Display help in learn
-                    Key::Char('m') => {
-                        *help = !*help;
-                    }
-                    _ => {}
-                };
-            };
-            // We could had some action to handle 'Tick' event here
-        }
-
-        // There is no event, we do nothing
-        // It might be a good idea to add a sleep here to IDLE the CPU
-        _ => {}
+        // If this event is an input, do some actions
+        if let Event::Input(input) = x {
+            if *tab_index == 0 {
+                return input_tab_one(input, states, tab_index, categories)
+            } else if *tab_index == 1 {
+                return input_tab_two(input, help, tab_index, word_index, categories)
+            } else {
+                panic!("Tab index is invalid !")
+            }
+        };
     }
+    UpdateState::Continue
+}
+
+fn input_tab_one(input: Key, states: &mut Selection, tab_index: &mut usize, categories: &[Categorie]) -> UpdateState {
+    match input {
+        // Change tabs
+        Key::Char('2') => {
+            *tab_index = 1;
+        }
+        // Quit
+        Key::Char('q') => return UpdateState::Stop,
+        // Move selection
+        Key::Char('j') => {
+            states.down();
+        }
+        Key::Char('k') => {
+            states.up();
+        }
+        Key::Char('h') => {
+            states.focus_left();
+        }
+        Key::Char('l') => {
+            states.focus_right(categories[states.get_categorie_index()].words.len());
+        }
+        // Change tabs
+        _ => {}
+    };
+
+    UpdateState::Continue
+}
+
+fn input_tab_two(input: Key, help: &mut bool, tab_index: &mut usize, word_index: &mut usize, categories: &[Categorie]) -> UpdateState {
+    match input {
+        // Change tabs
+        Key::Char('1') => {
+            *tab_index = 0;
+        }
+        // Quit
+        Key::Char('q') => return UpdateState::Stop,
+        // Change word index in learn
+        Key::Char('n') => {
+            if *word_index < WORDS_LEARN_SIZE - 1 {
+                *word_index += 1;
+                *help = false;
+            }
+        }
+        // Display help in learn
+        Key::Char('h') => {
+            *help = !*help;
+        }
+        _ => {}
+    };
+
     UpdateState::Continue
 }
