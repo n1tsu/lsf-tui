@@ -633,7 +633,7 @@ categories:
        description: "Main qui part du torse et qui fait un non avec l'index"
        lien: "https://youtu.be/rz3jw0_XXoc?t=148"
 
-     - mot: "Trise"
+     - mot: "Triste"
        description: "Boule avec la main droite sur le visage qui descend."
        lien: "https://youtu.be/rz3jw0_XXoc?t=150"
 
@@ -698,6 +698,23 @@ categories:
      - mot: "Portable"
        description: "'D' au niveau de la bouche."
        lien: "https://youtu.be/rz3jw0_XXoc?t=183"
+
+     - mot: "Palme"
+       description: "Battement de haut en bas avec les maints a plats"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=239"
+
+     - mot: "Talon"
+       description: "Mains en Y en parallele, qui montent et descendent"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=242"
+
+     - mot: "Crayon"
+       description: "Index gauche dans main droite qui fait un 'V' (mime de taille crayon)"
+       lien: "https://youtu.be/rz3jw0_XXoc?t=245"
+
+     - mot: "Vers de terre"
+       description: "Main gauche de droite a gauche en faisant un crochet qui se plie
+       et se deplie avec l'index."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=247"
 
  - categorie: "Paysage"
    mots:
@@ -773,3 +790,13 @@ categories:
      - mot: "Soleil"
        description: "Main qui fait une demi boule au dessus de la tete et qui s'agite."
        lien: "https://youtu.be/rz3jw0_XXoc?t=234"
+
+     - mot: "Pont"
+       description: "Index et majeur colles sur les deux mains, collées elles aussi par le bout
+       des doigts, qui s'eloignent en faisant une courbe."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=249"
+
+     - mot: "Vent"
+       description: "Mains en 'V' en parallele qui font des mouvements répétés de va et viens
+       de gauche à droite."
+       lien: "https://youtu.be/rz3jw0_XXoc?t=251"
