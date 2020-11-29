@@ -16,14 +16,14 @@ use crate::loader::{Categorie, Word};
 use crate::selection::Selection;
 
 // Number of words to learn for a session in tab 'Learn'
-pub static WORDS_LEARN_SIZE: usize = 20;
+// pub static WORDS_LEARN_SIZE: usize = 20;
 
 // Draw dictionary tab
 // Terminal type is ugly af :)
 pub fn draw_dictionary(
     terminal: &mut Terminal<TermionBackend<termion::raw::RawTerminal<io::Stdout>>>,
     states: &mut Selection,
-    categories: &Vec<Categorie>,
+    categories: &[Categorie],
 ) {
     terminal
         .draw(|mut f| {
@@ -125,9 +125,9 @@ pub fn draw_dictionary(
 
 pub fn draw_learn(
     terminal: &mut Terminal<TermionBackend<termion::raw::RawTerminal<io::Stdout>>>,
-    words_set: &Vec<&Word>,
+    words_set: &[&Word],
+    states: &mut Selection,
     time: &Duration,
-    word_index: &usize,
     help: &mut bool,
 ) {
     terminal
@@ -159,17 +159,18 @@ pub fn draw_learn(
                 )
                 .split(vert_chunks[1]); // These chunks are in the second vertical chunk
 
+            let word_index = states.get_word_index();
             // Display of the word
             let mut text = vec![Text::styled(
-                format!("{}\n\n", words_set[*word_index].name),
+                format!("{}\n\n", words_set[word_index].name),
                 Style::default().fg(Color::Green).modifier(Modifier::BOLD),
             )];
             let description = Text::styled(
-                format!("{}\n", words_set[*word_index].description),
+                format!("{}\n", words_set[word_index].description),
                 Style::default().fg(Color::Red),
             );
             let link = Text::styled(
-                format!("{}\n", words_set[*word_index].link),
+                format!("{}\n", words_set[word_index].link),
                 Style::default().fg(Color::Blue),
             );
 
@@ -199,7 +200,7 @@ pub fn draw_learn(
 
             // Display the index of the word
             let text = [Text::styled(
-                format!("{}/{}\n\n", *word_index + 1, WORDS_LEARN_SIZE),
+                format!("{}/{}\n\n", word_index + 1, words_set.len()),
                 Style::default().fg(Color::Green).modifier(Modifier::BOLD),
             )];
             let index_text = Paragraph::new(text.iter())
@@ -218,8 +219,8 @@ pub fn draw_learn(
                 .divider(DOT);
 
             // Create progression bar
-            let progression = u16::try_from((*word_index + 1) * 100).unwrap()
-                / u16::try_from(WORDS_LEARN_SIZE).unwrap();
+            let progression = u16::try_from((word_index + 1) * 100).unwrap()
+                / u16::try_from(words_set.len()).unwrap();
             let gauge = Gauge::default()
                 .block(Block::default().title("Progression").borders(Borders::ALL))
                 .style(Style::default().fg(Color::Yellow))

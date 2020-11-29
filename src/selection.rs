@@ -62,6 +62,14 @@ impl Selection {
         }
     }
 
+    pub fn set_focus_words(&mut self) {
+        self.focus_num = 1;
+    }
+
+    pub fn reset_word_index(&mut self) {
+        self.word_num = 0;
+    }
+
     // Getter for actual categorie index
     pub fn get_categorie_index(&self) -> usize {
         self.cat_num

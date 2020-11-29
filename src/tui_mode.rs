@@ -12,12 +12,13 @@ use termion::event::Key;
 use termion::raw::IntoRawMode;
 
 // local modules
-use crate::draw::{draw_dictionary, draw_learn, WORDS_LEARN_SIZE};
+use crate::draw::{draw_dictionary, draw_learn};
+// use crate::draw::WORDS_LEARN_SIZE;
 use crate::event::{Event, Events};
 use crate::loader::{Categorie, Word};
 use crate::selection::Selection;
 
-pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(), io::Error> {
+pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<(), io::Error> {
     // Initialize terminal
     let stdout = io::stdout().into_raw_mode()?;
     let backend = TermionBackend::new(stdout);
@@ -39,19 +40,11 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
     let mut swap = 0;
     let mut begin = Instant::now();
     let mut words_set = vec![];
-    let mut word_index = 0;
     let mut help = false;
 
     loop {
         // Call update function and quit if it return 'Stop'
-        match update(
-            &events,
-            &mut tab_index,
-            &mut states,
-            &categories,
-            &mut word_index,
-            &mut help,
-        ) {
+        match update(&events, &mut tab_index, &mut states, &categories, &mut help) {
             UpdateState::Stop => break,
             // Refresh the TUI widgets
             UpdateState::Continue => {
@@ -64,8 +57,15 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
                     if swap == 0 {
                         begin = Instant::now();
                         let mut rng = rand::thread_rng();
-                        words_set = all_words.iter().choose_multiple(&mut rng, WORDS_LEARN_SIZE);
-                        word_index = 0;
+                        // words_set = all_words.iter().choose_multiple(&mut rng, WORDS_LEARN_SIZE);
+                        let cat_index = states.get_categorie_index();
+                        words_set = categories[cat_index].words.iter().collect::<Vec<&Word>>();
+                        words_set.shuffle(&mut rng);
+
+                        // Dirty hacks
+                        states.reset_word_index();
+                        states.focus_right(words_set.len());
+
                         help = false;
                     }
                     // Calculate time since swap
@@ -73,7 +73,7 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
                     let time = now.duration_since(begin);
 
                     // Draw the learn mode
-                    draw_learn(&mut terminal, &words_set, &time, &word_index, &mut help);
+                    draw_learn(&mut terminal, &words_set, &mut states, &time, &mut help);
                     swap = 1;
                 }
             }
@@ -93,7 +93,6 @@ fn update(
     tab_index: &mut usize,
     states: &mut Selection,
     categories: &[Categorie],
-    word_index: &mut usize,
     help: &mut bool,
 ) -> UpdateState {
     // Try to receive an event, handle it if any, then just return
@@ -102,9 +101,9 @@ fn update(
         // If this event is an input, do some actions
         if let Event::Input(input) = x {
             if *tab_index == 0 {
-                return input_tab_one(input, states, tab_index, categories)
+                return input_tab_one(input, states, tab_index, categories);
             } else if *tab_index == 1 {
-                return input_tab_two(input, help, tab_index, word_index, categories)
+                return input_tab_two(input, states, help, tab_index, categories);
             } else {
                 panic!("Tab index is invalid !")
             }
@@ -113,7 +112,12 @@ fn update(
     UpdateState::Continue
 }
 
-fn input_tab_one(input: Key, states: &mut Selection, tab_index: &mut usize, categories: &[Categorie]) -> UpdateState {
+fn input_tab_one(
+    input: Key,
+    states: &mut Selection,
+    tab_index: &mut usize,
+    categories: &[Categorie],
+) -> UpdateState {
     match input {
         // Change tabs
         Key::Char('2') => {
@@ -141,7 +145,13 @@ fn input_tab_one(input: Key, states: &mut Selection, tab_index: &mut usize, cate
     UpdateState::Continue
 }
 
-fn input_tab_two(input: Key, help: &mut bool, tab_index: &mut usize, word_index: &mut usize, categories: &[Categorie]) -> UpdateState {
+fn input_tab_two(
+    input: Key,
+    states: &mut Selection,
+    help: &mut bool,
+    tab_index: &mut usize,
+    categories: &[Categorie],
+) -> UpdateState {
     match input {
         // Change tabs
         Key::Char('1') => {
@@ -151,8 +161,10 @@ fn input_tab_two(input: Key, help: &mut bool, tab_index: &mut usize, word_index:
         Key::Char('q') => return UpdateState::Stop,
         // Change word index in learn
         Key::Char('n') => {
-            if *word_index < WORDS_LEARN_SIZE - 1 {
-                *word_index += 1;
+            let cat_index = states.get_categorie_index();
+            // If the index is over total words in categorie
+            if states.get_word_index() < categories[cat_index].words.len() {
+                states.down();
                 *help = false;
             }
         }
