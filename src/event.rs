@@ -1,5 +1,5 @@
-use std::sync::mpsc;
 use std::io;
+use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
@@ -48,6 +48,6 @@ impl Events {
             })
         };
 
-        Self {tx, rx}
+        Self { tx, rx }
     }
 }

@@ -1,27 +1,26 @@
 use tui::widgets::ListState;
 
-
 // This structure holds the menu navigation information
 pub struct Selection {
-    pub categorie_state : ListState,
-    pub word_state : ListState,
-    cat_num : usize,
-    word_num : usize,
-    focus_num : usize,
-    words_len : usize,
-    cat_len : usize,
+    pub categorie_state: ListState,
+    pub word_state: ListState,
+    cat_num: usize,
+    word_num: usize,
+    focus_num: usize,
+    words_len: usize,
+    cat_len: usize,
 }
 
 impl Selection {
-    pub fn new(size : usize) -> Self {
+    pub fn new(size: usize) -> Self {
         let mut res = Self {
-            categorie_state : ListState::default(),
-            word_state : ListState::default(),
-            cat_num : 0,
-            word_num : 0,
-            focus_num : 0,
-            words_len : 0,
-            cat_len : size,
+            categorie_state: ListState::default(),
+            word_state: ListState::default(),
+            cat_num: 0,
+            word_num: 0,
+            focus_num: 0,
+            words_len: 0,
+            cat_len: size,
         };
         res.categorie_state.select(Some(0));
         res
@@ -35,7 +34,7 @@ impl Selection {
     }
 
     // Change focus on right chunk
-    pub fn focus_right(&mut self, w_size : usize) {
+    pub fn focus_right(&mut self, w_size: usize) {
         self.words_len = w_size;
         self.focus_num = 1;
         self.word_state.select(Some(self.word_num));
@@ -46,8 +45,7 @@ impl Selection {
         if self.focus_num == 0 {
             self.cat_num = (self.cat_len + self.cat_num - 1) % self.cat_len;
             self.categorie_state.select(Some(self.cat_num));
-        }
-        else {
+        } else {
             self.word_num = (self.words_len + self.word_num - 1) % self.words_len;
             self.word_state.select(Some(self.word_num));
         }
@@ -58,8 +56,7 @@ impl Selection {
         if self.focus_num == 0 {
             self.cat_num = (self.cat_num + 1) % self.cat_len;
             self.categorie_state.select(Some(self.cat_num));
-        }
-        else {
+        } else {
             self.word_num = (self.word_num + 1) % self.words_len;
             self.word_state.select(Some(self.word_num));
         }
@@ -72,6 +69,6 @@ impl Selection {
 
     // Getter for actual word index
     pub fn get_word_index(&self) -> usize {
-       self.word_num
+        self.word_num
     }
 }

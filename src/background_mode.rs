@@ -1,11 +1,15 @@
+use notify_rust::Notification;
 use rand::prelude::*;
 use std::io;
-use notify_rust::Notification;
-use std::{time, thread};
+use std::{thread, time};
 
 use crate::loader::Word;
 
-pub fn background_routine(sec: u64, all_words: Vec<Word>, description: bool) -> Result<(), io::Error> {
+pub fn background_routine(
+    sec: u64,
+    all_words: Vec<Word>,
+    description: bool,
+) -> Result<(), io::Error> {
     let gap_time = time::Duration::from_secs(sec);
     let mut count = 0;
 
@@ -14,11 +18,13 @@ pub fn background_routine(sec: u64, all_words: Vec<Word>, description: bool) -> 
         let word = &all_words[random_number];
         let string_count = count.to_string();
 
-        println!("{} :
+        println!(
+            "{} :
                  \r   Word        : {}
                  \r   Description : {}
                  \r   Link        : {}",
-                 string_count, word.name, word.description, word.link);
+            string_count, word.name, word.description, word.link
+        );
 
         let mut notif = Notification::new();
         notif.summary(&word.name).appname("lsf-tui");

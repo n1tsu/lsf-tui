@@ -1,28 +1,29 @@
 #[macro_use]
 extern crate clap;
 
-mod event;
-mod selection;
-mod loader;
 mod args;
-mod tui_mode;
 mod background_mode;
 mod draw;
+mod event;
+mod loader;
+mod selection;
+mod tui_mode;
 
 use std::io;
 
-use loader::{load_file, Word};
 use args::{parse_arguments, Mode};
-use tui_mode::{tui_routine};
-use background_mode::{background_routine};
+use background_mode::background_routine;
+use loader::{load_file, Word};
+use tui_mode::tui_routine;
 
 fn main() -> Result<(), io::Error> {
     // Read yaml file
     let categories = load_file("LSF.yaml");
-    let all_words = categories.iter()
-                              .cloned()
-                              .flat_map(|c| c.words)
-                              .collect::<Vec<Word>>();
+    let all_words = categories
+        .iter()
+        .cloned()
+        .flat_map(|c| c.words)
+        .collect::<Vec<Word>>();
 
     // Retrieve arguments
     let arguments = parse_arguments();

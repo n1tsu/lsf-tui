@@ -8,14 +8,14 @@ use tui::backend::TermionBackend;
 use tui::Terminal;
 
 // termion
-use termion::raw::IntoRawMode;
 use termion::event::Key;
+use termion::raw::IntoRawMode;
 
 // local modules
-use crate::event::{Events, Event};
-use crate::selection::Selection;
-use crate::loader::{Categorie, Word};
 use crate::draw::{draw_dictionary, draw_learn, WORDS_LEARN_SIZE};
+use crate::event::{Event, Events};
+use crate::loader::{Categorie, Word};
+use crate::selection::Selection;
 
 pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(), io::Error> {
     // Initialize terminal
@@ -44,7 +44,14 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
 
     loop {
         // Call update function and quit if it return 'Stop'
-        match update(&events, &mut tab_index, &mut states, &categories, &mut word_index, &mut help) {
+        match update(
+            &events,
+            &mut tab_index,
+            &mut states,
+            &categories,
+            &mut word_index,
+            &mut help,
+        ) {
             UpdateState::Stop => break,
             // Refresh the TUI widgets
             UpdateState::Continue => {
@@ -57,7 +64,7 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
                     if swap == 0 {
                         begin = Instant::now();
                         let mut rng = rand::thread_rng();
-                        words_set = all_words.iter().choose_multiple(&mut rng,  WORDS_LEARN_SIZE);
+                        words_set = all_words.iter().choose_multiple(&mut rng, WORDS_LEARN_SIZE);
                         word_index = 0;
                         help = false;
                     }
@@ -69,7 +76,7 @@ pub fn tui_routine(categories: Vec<Categorie>, all_words: Vec<Word>) -> Result<(
                     draw_learn(&mut terminal, &words_set, &time, &word_index, &mut help);
                     swap = 1;
                 }
-            },
+            }
         }
     }
     terminal.clear()?;
@@ -81,7 +88,14 @@ enum UpdateState {
     Continue,
 }
 
-fn update(events: &Events, tab_index: &mut usize, states: &mut Selection, categories: &Vec<Categorie>, word_index: &mut usize, help: &mut bool) -> UpdateState {
+fn update(
+    events: &Events,
+    tab_index: &mut usize,
+    states: &mut Selection,
+    categories: &Vec<Categorie>,
+    word_index: &mut usize,
+    help: &mut bool,
+) -> UpdateState {
     // Try to receive an event, handle it if any, then just return
     match events.rx.recv() {
         // An event has been sent, let's handle it
@@ -90,9 +104,7 @@ fn update(events: &Events, tab_index: &mut usize, states: &mut Selection, catego
             if let Event::Input(input) = x {
                 match input {
                     // Quit
-                    Key::Char('q') => {
-                        return UpdateState::Stop
-                    }
+                    Key::Char('q') => return UpdateState::Stop,
                     // Move selection
                     Key::Char('j') => {
                         states.down();
@@ -132,7 +144,7 @@ fn update(events: &Events, tab_index: &mut usize, states: &mut Selection, catego
 
         // There is no event, we do nothing
         // It might be a good idea to add a sleep here to IDLE the CPU
-        _ => {},
+        _ => {}
     }
-  UpdateState::Continue
+    UpdateState::Continue
 }
