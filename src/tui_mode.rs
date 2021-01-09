@@ -19,7 +19,7 @@ use crate::loader::{Categorie, Word};
 use crate::selection::Selection;
 
 // video search
-use crate::search_video::search_video;
+use crate::search_video::{query_videos, play_video};
 
 pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<(), io::Error> {
     // Initialize terminal
@@ -170,7 +170,10 @@ fn input_tab_one(
         }
         Key::Char('v') => {
             let word = &categories[states.get_categorie_index()].words[states.get_word_index()];
-            search_video(word.name.to_string()).unwrap();
+            let urls = query_videos(&word.name.to_string());
+            if !urls.is_empty() {
+                play_video(&urls[0]).unwrap();
+            }
         }
         // Change tabs
         _ => {}

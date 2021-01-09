@@ -3,23 +3,52 @@ use regex::Regex;
 
 use std::io;
 
-pub fn search_video(word: String) -> Result<(), io::Error> {
+
+pub fn select_videos(urls: Vec<String>) -> Result<(), io::Error> {
+    println!("{} videos found", urls.len());
+    if urls.is_empty() {
+        return Ok(())
+    }
+
+    for (i, uri) in urls.iter().enumerate() {
+        println!("[{}] - {}", i, uri);
+    }
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Did not enter a correct string");
+    let input_num: usize = match input.trim().parse::<usize>() {
+        Ok(n) => n,
+        Err(e) => {
+           println!("{}", e);
+           return Ok(())
+        }
+    };
+    if input_num >= urls.len() {
+        println!("Input invalid");
+        return Ok(())
+    }
+
+    play_video(&urls[input_num])
+}
+
+pub fn query_videos(word: &str) -> Vec<String> {
     let link = format!("https://dico.elix-lsf.fr/dictionnaire/{}", word);
     let body = reqwest::blocking::get(&link).unwrap().text().unwrap();
-    let req = Regex::new("<video src=\"(https://www.elix-lsf.fr/.+?mp4)\"></video>").unwrap();
 
     let mut videos = Vec::new();
+
+    let req = Regex::new("<video src=\"(https://www.elix-lsf.fr/.+?mp4)\"></video>").unwrap();
     for cap in req.captures_iter(&body) {
         videos.push(String::from(&cap[1]));
     };
 
-    if videos.is_empty() {
-        return Ok(())
-    };
+    videos
+}
 
+pub fn play_video(uri: &str) -> Result<(), io::Error> {
     gstreamer::init().unwrap();
     let playbin = gstreamer::ElementFactory::make("playbin", None).unwrap();
-    playbin.set_property("uri", &videos[0]).unwrap();
+    playbin.set_property("uri", &uri).unwrap();
     let bus = playbin.get_bus().unwrap();
     playbin
         .set_state(gstreamer::State::Playing)
@@ -30,6 +59,7 @@ pub fn search_video(word: String) -> Result<(), io::Error> {
 
         match msg.view() {
             MessageView::Eos(..) => break,
+            /*
             MessageView::Error(err) => {
                 println!(
                     "Error from {:?}: {} ({:?})",
@@ -39,6 +69,7 @@ pub fn search_video(word: String) -> Result<(), io::Error> {
                 );
                 break;
             }
+            */
             MessageView::StateChanged(state_changed) =>
             // We are only interested in state-changed messages from playbin
             {

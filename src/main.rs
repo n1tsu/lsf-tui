@@ -16,7 +16,7 @@ use args::{parse_arguments, Mode};
 use background_mode::background_routine;
 use loader::{load_file, Word};
 use tui_mode::tui_routine;
-use search_video::search_video;
+use search_video::{query_videos, select_videos};
 
 fn main() -> Result<(), io::Error> {
     // Read yaml file
@@ -32,6 +32,9 @@ fn main() -> Result<(), io::Error> {
     match arguments.mode {
         Mode::TUI => tui_routine(categories, all_words),
         Mode::Background(sec) => background_routine(sec, all_words, arguments.description),
-        Mode::Video => search_video(arguments.video_word),
+        Mode::Video => {
+            let video_urls = query_videos(&arguments.video_word);
+            select_videos(video_urls)
+        },
     }
 }
