@@ -18,6 +18,9 @@ use crate::event::{Event, Events};
 use crate::loader::{Categorie, Word};
 use crate::selection::Selection;
 
+// video search
+use crate::search_video::search_video;
+
 pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<(), io::Error> {
     // Initialize terminal
     let stdout = io::stdout().into_raw_mode()?;
@@ -164,6 +167,10 @@ fn input_tab_one(
         }
         Key::Char('l') => {
             states.focus_right(categories[states.get_categorie_index()].words.len());
+        }
+        Key::Char('v') => {
+            let word = &categories[states.get_categorie_index()].words[states.get_word_index()];
+            search_video(word.name.to_string()).unwrap();
         }
         // Change tabs
         _ => {}
