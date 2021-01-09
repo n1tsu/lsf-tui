@@ -40,6 +40,7 @@ FLAGS:
 
 OPTIONS:
     -b, --background <SECONDS>    Background mode with notifications
+    -q, --video <video>           Search video for a word in Elix dictionary
     -c, --yaml <YAML>             YAML file containing words [default: LSF.yaml]
 ```
 
@@ -52,6 +53,7 @@ OPTIONS:
   * `j` : Focus down
   * `k` : Focus up
   * `l` : Focus right
+  * `v` : Try to search for a video of the word
 
 * `2` : Enter trial mode
   * `n` : Next word
