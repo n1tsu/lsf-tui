@@ -78,6 +78,8 @@ pub fn tui_routine(categories: Vec<Categorie>, _all_words: Vec<Word>) -> Result<
                             .map(|&word| (word, WordState::Next))
                             .collect();
 
+                        words_learn_set[0].1 = WordState::Current;
+
                         // Dirty hacks
                         states.reset_word_index();
                         states.focus_right(words_set.len());

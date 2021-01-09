@@ -8,6 +8,7 @@ mod event;
 mod loader;
 mod selection;
 mod tui_mode;
+mod search_video;
 
 use std::io;
 
@@ -15,6 +16,7 @@ use args::{parse_arguments, Mode};
 use background_mode::background_routine;
 use loader::{load_file, Word};
 use tui_mode::tui_routine;
+use search_video::search_video;
 
 fn main() -> Result<(), io::Error> {
     // Read yaml file
@@ -30,5 +32,6 @@ fn main() -> Result<(), io::Error> {
     match arguments.mode {
         Mode::TUI => tui_routine(categories, all_words),
         Mode::Background(sec) => background_routine(sec, all_words, arguments.description),
+        Mode::Video => search_video(arguments.video_word),
     }
 }

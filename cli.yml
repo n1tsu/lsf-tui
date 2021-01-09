@@ -24,3 +24,8 @@ args:
         help: Show word description in notifications
         requires: background
         takes_value: false
+    - video:
+        short: q
+        long: video
+        help: Search video for a word in Elix dictionary
+        takes_value: true
